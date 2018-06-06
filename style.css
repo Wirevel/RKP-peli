@@ -1,0 +1,76 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background: #24272E;
+}
+
+header{
+    text-align: center;
+    padding:20px;
+    font-family: sans-serif;
+    margin: 0 auto;
+    background:white;
+    font-weight: bold;
+}
+#tulosTaulu{
+    position: relative;
+    height:100px;
+    width:200px;
+    margin:20px auto;
+    border: 3px solid white;
+    font-size: 46px;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    padding: 15px 20px;
+}
+
+.badge{
+    background: #E25840;
+    color:white;
+    font-size: 14px;
+    padding: 2px 18px;
+    font-family: sans-serif;
+}
+#pelaaja{
+    position: absolute;
+    top:30px;
+    left:-30px;
+}
+#tietokone{
+    position: absolute;
+    top:30px;
+    right: -40px;
+}
+
+#lause{
+    text-align: center;
+    color:white;
+    
+}
+.valinnat{
+    text-align: center;
+    margin: 50px 0;
+}
+.valinta{
+    border: white solid;
+    border-radius: 50%;
+    padding: 10px;
+    margin: 0 20px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+.valinta:hover{
+    cursor: pointer;
+    background: #ededed;
+}
+#action{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    font-family: sans-serif;
+}

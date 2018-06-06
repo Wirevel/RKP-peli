@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KPS-Peli</title>
+        <link href="style.css" type="text/css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <header>
+        <h1>Kivi Sakset Paperi</h1>
+        </header>
+            <div id="tulosTaulu">
+                <div class="badge" id="pelaaja">user</div>
+                <div class="badge" id="tietokone">comp</div>
+                <span id=player>0</span>:<span id="comp">0</span>
+            </div>
+        <h1 id="lause">Paper covers rock. You win!</h1>
+        <div class="valinnat">
+            <div id="rock" class="valinta">
+                <img src="rock.png" width="99px">
+            </div>
+            <div id="scissors" class="valinta">
+                <img src="sakset.png" width="100px">
+            </div>
+            <div id="paper" class="valinta">
+                <img src="paper.png" width="90px">
+            </div>
+        </div>
+        <p id="action">Make your move!</p>
+    <script href="app.js" type="text/javascript">
+        
+        
+    const userScore = 0;
+    const compScore = 0;
+    const userScore_span = document.getElementById("player");
+    const compScore_span = document.getElementById("comp");
+    const tulosTaulu_div = document.querySelector(".tulosTaulu");
+    const tulos_div = document.querySelector(".tulos");
+    const rock_div = document.getElementById("rock");
+    const paper_div= document.getElementById("paper");
+    const scissors_div = document.getElementById("scissors");
+
+    function getComputerChoice() {
+        const choices = ['rock', 'paper', 'scissors'];
+        const randomNumber = Math.floor(Math.random() * 3);
+        return choices[randomNumber];
+    }
+        
+    function game(userChoice) {
+        const computerChoice = getComputerChoice();
+        console.log("computer choice => " + computerChoice);
+        console.log("user choice => " + userChoice);
+    }
+        game("c");
+    
+    function main(){
+        rock_div.addEventListener('click', function() {
+            game("rock");
+        })
+
+        paper_div.addEventListener('click', function() {
+            game("paper");
+        })
+
+        scissors_div.addEventListener('click', function() {
+            game("scissors")
+        })
+    }
+    
+    main();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </script>
+    </body>
+</html>
