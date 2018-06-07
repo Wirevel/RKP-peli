@@ -30,8 +30,8 @@
     <script href="app.js" type="text/javascript">
         
         
-    const userScore = 0;
-    const compScore = 0;
+    let userScore = 0;
+    let compScore = 0;
     const userScore_span = document.getElementById("player");
     const compScore_span = document.getElementById("comp");
     const tulosTaulu_div = document.querySelector(".tulosTaulu");
@@ -48,10 +48,26 @@
         
     function game(userChoice) {
         const computerChoice = getComputerChoice();
-        console.log("computer choice => " + computerChoice);
-        console.log("user choice => " + userChoice);
+        switch (userChoice + computerChoice){
+            case "rockscissors":
+            case "paperrock":
+            case "scissorspaper":
+                console.log("User WINS!");
+                break;
+                
+            case "rockpaper":
+            case "paperscissors":
+            case "scissorsrock":
+                console.log("Computer WINS!");
+                break;
+                
+            case "rockrock":
+            case "paperpaper":
+            case "scissorsscissors":
+                console.log("DRAW!");
+                break;
+        }
     }
-        game("c");
     
     function main(){
         rock_div.addEventListener('click', function() {
