@@ -14,7 +14,9 @@
                 <div class="badge" id="tietokone">comp</div>
                 <span id=player>0</span>:<span id="comp">0</span>
             </div>
-        <h1 id="lause">Paper covers rock. You win!</h1>
+        <div class="lause">
+            <p>Paper covers rock. You win!</p>
+        </div>
         <div class="valinnat">
             <div id="rock" class="valinta">
                 <img src="rock.png" width="99px">
@@ -29,13 +31,13 @@
         <p id="action">Make your move!</p>
     <script href="app.js" type="text/javascript">
         
-        
+    
     let userScore = 0;
     let compScore = 0;
     const userScore_span = document.getElementById("player");
     const compScore_span = document.getElementById("comp");
     const tulosTaulu_div = document.querySelector(".tulosTaulu");
-    const tulos_div = document.querySelector(".tulos");
+    const lause_div = document.querySelector(".lause > p");
     const rock_div = document.getElementById("rock");
     const paper_div= document.getElementById("paper");
     const scissors_div = document.getElementById("scissors");
@@ -46,25 +48,58 @@
         return choices[randomNumber];
     }
         
+    function wordFix(word){
+        if (word === "rock") return "Rock";
+        if (word === "paper") return "Paper";
+        return "Scissors";
+        
+    }
+        
+    function win(userChoice, computerChoice){
+        userScore++;
+        userScore_span.innerHTML = userScore;
+        compScore_span.innerHTML = compScore;
+        lause_div.innerHTML = wordFix(userChoice) + " beats " + wordFix(computerChoice) + ". You Win!";
+        document.getElementById(userChoice).classList.add('green-glow');
+        setTimeout(function() {document.getElementById(userChoice).classList.remove('green-glow')}, 300);
+        
+    }
+        
+
+    function lose(userChoice, computerChoice){
+        compScore++;
+        userScore_span.innerHTML = userScore;
+        compScore_span.innerHTML = compScore;
+        lause_div.innerHTML = wordFix(userChoice) + " loses to " + wordFix(computerChoice) + ". You Lose!";
+        document.getElementById(userChoice).classList.add('red-glow');
+        setTimeout(function() {document.getElementById(userChoice).classList.remove('red-glow')}, 300);
+    }
+     
+    function draw(useChoice, computerChoice){
+        lause_div.innerHTML = "It's a DRAW!";
+        document.getElementById(userChoice).classList.add('gray-glow');       setTimeout(function() {document.getElementById(userChoice).classList.remove('gray-glow')}, 300);
+    }
+        
+        
     function game(userChoice) {
         const computerChoice = getComputerChoice();
         switch (userChoice + computerChoice){
             case "rockscissors":
             case "paperrock":
             case "scissorspaper":
-                console.log("User WINS!");
+                win(userChoice, computerChoice);
                 break;
                 
             case "rockpaper":
             case "paperscissors":
             case "scissorsrock":
-                console.log("Computer WINS!");
+                lose(userChoice, computerChoice);
                 break;
                 
             case "rockrock":
             case "paperpaper":
             case "scissorsscissors":
-                console.log("DRAW!");
+                draw(userChoice, computerChoice);
                 break;
         }
     }
